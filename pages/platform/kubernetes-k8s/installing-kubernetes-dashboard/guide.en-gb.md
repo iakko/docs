@@ -46,13 +46,19 @@ This tutorial assumes that you already have a working OVHcloud Managed Kubernete
 
 ## Deploy the Dashboard in your cluster
 
-To deploy the Dashboard, execute following command:
+If you are running Kubernetes version < 1.16, you can use Dashboard version v1.10.1, executing the following command:
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
 ```
 
-It should display something like this:
+If instead you are running version 1.16+, you must use the Kubernetes Dashboard v2+, otherwise you will get generico errors usinv v1.10.1:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta4/aio/deploy/recommended.yaml
+```
+
+In both cases, you should display something like this:
 
 <pre class="console"><code>$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml
 secret/kubernetes-dashboard-certs created
